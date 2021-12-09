@@ -27,12 +27,6 @@
 .post-title {
   margin: 20px 0 10px;
 }
-
-.detail .info .iconfont {
-  font-size: 1.125rem;
-  margin-right: .25rem;
-}
-
 </style>
 
 <template>

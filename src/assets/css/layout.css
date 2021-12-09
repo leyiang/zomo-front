@@ -32,3 +32,23 @@
     max-width: 1400px;
     margin: 0 auto;
 }
+
+.gap-h {
+    gap: .5rem;
+}
+
+.gap-1 {
+    gap: 1rem;
+}
+
+.gap-2 {
+    gap: 2rem;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+.f1 {
+    flex: 1;
+}
