@@ -3,6 +3,7 @@ import ASlider from "./components/ASlider";
 import APost from "./components/APost";
 import APostList from "./components/APostList";
 import ACrumb from "./components/ACrumb";
+import AInfo from "./components/AInfo";
 
 export default (Vue) => {
     Vue.component( "a-header", AHeader );
@@ -10,4 +11,5 @@ export default (Vue) => {
     Vue.component( "a-post", APost );
     Vue.component( "a-post-list", APostList );
     Vue.component( "a-crumb", ACrumb );
+    Vue.component( "a-info", AInfo );
 };

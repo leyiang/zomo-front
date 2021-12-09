@@ -46,20 +46,9 @@
       <h4 class="post-title">文章标题</h4>
 
       <div class="info-list flex">
-        <span class="info flex align-center">
-          <i class="iconfont icon-comment"></i>
-          <span>20</span>
-        </span>
-
-        <span class="info flex align-center">
-          <i class="iconfont icon-good"></i>
-          <span>20</span>
-        </span>
-
-        <span class="info flex align-center">
-          <i class="iconfont icon-browse"></i>
-          <span>20</span>
-        </span>
+        <a-info icon="comment">20</a-info>
+        <a-info icon="good">20</a-info>
+        <a-info icon="browse">20</a-info>
       </div>
 
     </div>
