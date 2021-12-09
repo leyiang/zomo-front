@@ -1,9 +1,5 @@
 <style>
-.post-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-}
+
 </style>
 
 <template>
@@ -16,7 +12,7 @@
       <div class="section">
         <h2 class="section-title">UI/UX 教程</h2>
 
-        <div class="post-list">
+        <a-post-list>
           <a-post></a-post>
           <a-post></a-post>
           <a-post></a-post>
@@ -25,7 +21,7 @@
           <a-post></a-post>
           <a-post></a-post>
           <a-post></a-post>
-        </div>
+        </a-post-list>
       </div>
     </div>
 
