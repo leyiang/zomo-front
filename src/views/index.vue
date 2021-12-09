@@ -4,7 +4,7 @@
 
 <template>
   <div class="blog-page">
-    <a-header class="index-header"></a-header>
+    <a-header class="with-margin"></a-header>
 
     <div class="layout-inner">
       <a-slider class="with-margin"></a-slider>

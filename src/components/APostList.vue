@@ -8,7 +8,7 @@
 
 <template>
   <div class="post-list">
-    <template></template>
+    <slot></slot>
   </div>
 </template>
 

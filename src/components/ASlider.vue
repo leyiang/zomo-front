@@ -6,7 +6,7 @@
   }
 
   .slider-wrapper.with-margin {
-    margin: 40px 0;
+    margin-bottom: 40px;
   }
 
   .slide img {

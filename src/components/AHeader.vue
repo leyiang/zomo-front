@@ -4,6 +4,10 @@
     background-color: #FFF;
   }
 
+  .blog-header.with-margin {
+    margin-bottom: 40px;
+  }
+
   .blog-header .logo-img {
     width: 80px;
     margin-right: 50px;
@@ -34,10 +38,10 @@
         </router-link>
 
         <div class="blog-category h-full flex">
-          <router-link to="/" class="category-link center h-full current-category">UI/UX</router-link>
-          <router-link to="/" class="category-link center h-full">PS教程</router-link>
-          <router-link to="/" class="category-link center h-full">网页设计</router-link>
-          <router-link to="/" class="category-link center h-full">平面设计</router-link>
+          <router-link to="/category" class="category-link center h-full current-category">UI/UX</router-link>
+          <router-link to="/category" class="category-link center h-full">PS教程</router-link>
+          <router-link to="/category" class="category-link center h-full">网页设计</router-link>
+          <router-link to="/category" class="category-link center h-full">平面设计</router-link>
         </div>
       </div>
 

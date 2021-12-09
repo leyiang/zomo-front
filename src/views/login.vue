@@ -58,7 +58,7 @@
     <div class="poster">
       <div class="slogan flex flex-col align-center">
         <h2>心存理想</h2>
-        <h2 style="margin-left: 2rem;">星夜兼程</h2>
+        <h2>星夜兼程</h2>
       </div>
     </div>
 
@@ -76,7 +76,7 @@
           <input type="password" id="password" name="password" required class="radius">
         </div>
 
-        <button class="btn" style="margin-bottom: 1.5rem;">登录</button>
+        <button class="btn w-full" style="margin-bottom: 1.5rem;">登录</button>
         <router-link to="/" class="sub">还没有账号？点此注册</router-link>
       </form>
     </div>

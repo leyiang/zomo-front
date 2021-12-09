@@ -14,6 +14,11 @@ const router = new VueRouter({
             path: "/login",
             component: () => import("./login")
         },
+
+        {
+            path: "/category",
+            component: () => import("./category")
+        },
     ]
 });
 
