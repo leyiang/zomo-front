@@ -24,6 +24,11 @@ const router = new VueRouter({
             path: "/detail",
             component: () => import("./detail")
         },
+
+        {
+            path: "/my",
+            component: () => import("./my")
+        },
     ]
 });
 

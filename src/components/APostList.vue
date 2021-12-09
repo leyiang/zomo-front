@@ -4,6 +4,12 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
+
+.post-list.lg {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+}
 </style>
 
 <template>

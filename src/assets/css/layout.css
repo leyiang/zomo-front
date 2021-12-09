@@ -52,3 +52,7 @@
 .f1 {
     flex: 1;
 }
+
+.mt-auto {
+    margin-top: auto;
+}
