@@ -3,8 +3,13 @@
 
 :root {
     --main-color: #254BD3;
+    --main-bright-color: #335ced;
     --text-color: #222;
     --text-sub-color: #5F5F5F;
+}
+
+html, body, #app {
+    height: 100%;
 }
 
 body {
@@ -32,4 +37,27 @@ a {
 .radius {
     border-radius: 5px;
     overflow: hidden;
+}
+
+.sub {
+    color: var(--text-sub-color);
+}
+
+button {
+    cursor: pointer;
+}
+
+.btn {
+    color: #FFF;
+    background-color: var(--main-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 1rem;
+    width: 100%;
+    transition: background-color 300ms;
+}
+
+.btn:hover {
+    background-color: var(--main-bright-color);
 }
