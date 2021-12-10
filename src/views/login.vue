@@ -63,25 +63,96 @@
     </div>
 
     <div class="login-form-container center">
-      <form class="flex flex-col align-center">
-        <img src="@/assets/logo-zomo.png" alt="logo-zomo" class="logo-zomo">
 
-        <div class="form-el flex flex-col">
-          <label for="email">请输入邮箱</label>
-          <input type="email" id="email" name="email" required class="radius" autocomplete="off">
-        </div>
+      <template v-if="type === 'login' ">
+        <form class="flex flex-col align-center">
+          <router-link to="/">
+            <img src="@/assets/logo-zomo.png" alt="logo-zomo" class="logo-zomo">
+          </router-link>
 
-        <div class="form-el flex flex-col">
-          <label for="password">请输入密码</label>
-          <input type="password" id="password" name="password" required class="radius">
-        </div>
+          <div class="form-el flex flex-col">
+            <label for="email">请输入邮箱</label>
+            <input type="email" id="email" name="email" required class="radius" autocomplete="off">
+          </div>
 
-        <button class="btn w-full" style="margin-bottom: 1.5rem;">登录</button>
-        <router-link to="/" class="sub">还没有账号？点此注册</router-link>
-      </form>
+          <div class="form-el flex flex-col">
+            <label for="password">请输入密码</label>
+            <input type="password" id="password" name="password" required class="radius">
+          </div>
+
+          <button class="btn w-full" style="margin-bottom: 1.5rem;">登录</button>
+          <button class="sub wrap" type="button" @click="switchRegister">还没有账号？点此注册</button>
+        </form>
+      </template>
+
+      <template v-else>
+        <form class="flex flex-col align-center" @submit.prevent="register">
+          <router-link to="/">
+            <img src="@/assets/logo-zomo.png" alt="logo-zomo" class="logo-zomo">
+          </router-link>
+
+          <div class="form-el flex flex-col">
+            <label for="username">用户名</label>
+            <input type="text" id="username" name="username" required class="radius" autocomplete="off">
+          </div>
+
+          <div class="form-el flex flex-col">
+            <label for="email">邮箱</label>
+            <input type="email" id="email" name="email" required class="radius">
+          </div>
+
+          <div class="form-el flex flex-col">
+            <label for="password">密码</label>
+            <input type="password" id="password" name="password" required class="radius">
+          </div>
+
+          <div class="form-el flex flex-col">
+            <label for="invite_code">邀请码 <span class="sub">(如果有的话)</span></label>
+            <input type="text" id="invite_code" name="invite_code" class="radius" autocomplete="off">
+          </div>
+
+          <button class="btn w-full" style="margin-bottom: 1.5rem;">点此注册</button>
+          <button class="sub wrap" type="button" @click="switchLogin">已有账号？点此登录</button>
+        </form>
+      </template>
+
     </div>
   </div>
 </template>
 
 <script>
+import utils from "@/utils";
+
+export default {
+  data() {
+    return {
+      type: "register"
+    }
+  },
+
+  methods: {
+    switchRegister() {
+      this.type = "register";
+    },
+
+    switchLogin() {
+      this.type = "login";
+    },
+
+    register( event ) {
+      const data = new FormData( event.target );
+      const json = utils.toJSON( data );
+      this.api.post("/users/register", json).then( r => {
+        console.log( r );
+      }).catch( e => {
+        const message = e?.response?.data?.message;
+        console.warn( e );
+
+        if( message ) {
+          console.log( message );
+        }
+      });
+    }
+  }
+}
 </script>

@@ -25,7 +25,7 @@ export default (Vue) => {
     });
 
     api.interceptors.request.use( config => {
-        config.headers.Authorization = "Bearer " + "token";
+        // config.headers.Authorization = "Bearer " + "token";
         return config;
     });
 };
