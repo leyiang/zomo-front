@@ -110,7 +110,9 @@ export default {
       const data = new FormData( event.target );
       const json = utils.toJSON( data );
       this.api.post("/users/register", json).then( r => {
-        console.log( r );
+        this.message.success("注册成功！点击确定跳到登录页~", () => {
+          this.$router.push("/login");
+        });
       }).catch( e => {
         const message = e?.response?.data?.message;
         console.warn( e );

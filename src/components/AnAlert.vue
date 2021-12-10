@@ -1,7 +1,15 @@
 <style>
-.alert .icon-success {
+.alert .iconfont {
   font-size: 6rem;
+}
+
+.alert .icon-success {
   color: #1bc5bd;
+}
+
+.alert .icon-prompt {
+  font-size: 6rem;
+  color: #ff5f5f;
 }
 
 .alert p {
@@ -16,7 +24,7 @@
       @close="close"
   >
     <div class="flex flex-col gap-2 align-center w-full justify-center">
-      <i class="iconfont icon-success"></i>
+      <i :class="['iconfont', 'icon-' + (success ? 'success' : 'prompt') ]"></i>
       <p>{{ message }}</p>
       <button class="btn" @click="close">确认</button>
     </div>
@@ -44,8 +52,12 @@ export default {
 
   data() {
     return {
-      show: true,
+      show: false,
     }
+  },
+
+  mounted() {
+    this.show = true;
   },
 
   methods: {
@@ -53,8 +65,8 @@ export default {
       this.show = false;
       if( this.onclose ) this.onclose();
 
-      this.$el.remove();
-      this.$destroy();
+      // this.$el.remove();
+      // this.$destroy();
     }
   }
 }

@@ -36,7 +36,7 @@
       />
     </transition>
 
-    <transition name="zoom">
+    <transition name="scale">
       <div class="modal radius flex" v-if="show">
         <slot></slot>
       </div>

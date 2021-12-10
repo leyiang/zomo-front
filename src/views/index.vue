@@ -84,8 +84,5 @@
 
 <script>
 export default {
-  created() {
-    this.message.success("注册成功");
-  }
 }
 </script>

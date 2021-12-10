@@ -1,5 +1,6 @@
 @import "../iconfont/iconfont.css";
 @import "./layout.css";
+@import "./animation.css";
 
 :root {
     --main-color: #254BD3;
