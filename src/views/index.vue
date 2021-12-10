@@ -5,7 +5,7 @@
     <div class="layout-inner">
       <a-slider class="with-margin"></a-slider>
 
-      <div class="section-list flex flex-col gap-2">
+      <div class="section-list flex flex-col" style="gap: 4rem;">
         <div class="section">
           <h2 class="section-title">UI/UX 教程</h2>
 

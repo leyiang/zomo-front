@@ -32,6 +32,8 @@ a {
 .section-title {
     font-size: 26px;
     margin: 0 0 1rem;
+    border-bottom: 1px solid #e1e0e0;
+    padding-bottom: .5rem;
 }
 
 .radius {
