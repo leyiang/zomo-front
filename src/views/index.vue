@@ -21,6 +21,8 @@
           <a-post></a-post>
           <a-post></a-post>
           <a-post></a-post>
+          <a-post></a-post>
+          <a-post></a-post>
         </a-post-list>
       </div>
     </div>

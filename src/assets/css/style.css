@@ -107,3 +107,18 @@ textarea {
     color: #5F5F5F;
     background-color: #CCC;
 }
+
+.btn-ghost {
+    color: #FFF;
+    background-color: transparent;
+    border: 1px solid #FFF;
+}
+
+.btn-ghost:hover {
+    background-color: #FFF;
+    color: var(--main-color);
+}
+
+.cap {
+    border-radius: 10rem;
+}

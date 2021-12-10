@@ -7,6 +7,9 @@
 .my-header {
   height: 40px;
   background-color: #FFF;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  padding: 0 1rem;
 }
 
 .main-content {
@@ -81,17 +84,90 @@
   right: 60px;
 }
 
+.my-aside {
+  padding-top: 70px;
+  color: #FFF;
+}
+
+.my-aside .avatar {
+  width: 140px;
+  height: 140px;
+  position: relative;
+}
+
+.my-aside img {
+  border-radius: 50%;
+}
+
+.my-aside h4 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.my-aside .wrap {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.edit {
+  color: #FFF;
+  font-weight: 700;
+  background-color: #333;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.edit:hover {
+  background-color: #444;
+}
+
+.post-poster {
+  width: 40px;
+  height: 40px;
+  background-color: #444;
+  border-radius: 5px;
+  margin-right: 30px;
+}
+
+.comment-info {
+  margin-left: 70px;
+}
+.comment-message {
+  margin: 0 0 .5rem;
+}
 </style>
 
 <template>
   <div class="my-page flex h-full">
     <aside class="my-aside">
+      <div class="flex flex-col gap-2 align-center">
+        <div class="avatar">
+          <button class="wrap">
+            <span class="edit center"><i class="iconfont icon-upload"></i></span>
+          </button>
+          <img src="../assets/p_img.png" alt="profile_image">
+        </div>
 
+        <h4>Nickname</h4>
+        <button class="btn btn-sub btn-sm cap btn-ghost" style="padding: .5rem 1rem">Update info</button>
+      </div>
     </aside>
 
     <main class="my-main f1 flex flex-col">
-      <header class="my-header">
-        12312
+      <header class="my-header flex align-center">
+
+        <div class="user-info ml-auto">
+          <span class="sub">Hi, Nickname.</span>
+
+          <button class="wrap">
+            <i class="iconfont icon-sign-out"></i>
+          </button>
+        </div>
       </header>
 
       <div class="main-content flex flex-col" style="gap: 4rem;">
@@ -123,7 +199,7 @@
 
         <div class="section">
           <h2 class="section-title">我收藏的</h2>
-          <a-post-list class="lg">
+          <a-post-list>
             <a-post></a-post>
             <a-post></a-post>
             <a-post></a-post>
@@ -134,13 +210,77 @@
 
         <div class="section">
           <h2 class="section-title">我点赞的</h2>
-          <a-post-list class="lg">
+          <a-post-list>
             <a-post></a-post>
             <a-post></a-post>
             <a-post></a-post>
             <a-post></a-post>
             <a-post></a-post>
           </a-post-list>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">我评论的</h2>
+
+          <div class="post-comment">
+            <div class="post-meta flex align-center">
+              <div class="post-poster">
+                <img src="" alt="">
+              </div>
+              <h4 class="sub">文章标题在这里，不管有多长都放的下</h4>
+              <button class="wrap radius ml-auto">
+                <a-info icon="good">20</a-info>
+              </button>
+            </div>
+
+            <div class="comment-info">
+              <p class="comment-message">这是你的评论内容</p>
+              <time>
+                <small class="sub">2021年8月8日</small>
+              </time>
+            </div>
+          </div>
+          <hr>
+
+          <div class="post-comment">
+            <div class="post-meta flex align-center">
+              <div class="post-poster">
+                <img src="" alt="">
+              </div>
+              <h4 class="sub">文章标题在这里，不管有多长都放的下</h4>
+              <button class="wrap radius ml-auto">
+                <a-info icon="good">20</a-info>
+              </button>
+            </div>
+
+            <div class="comment-info">
+              <p class="comment-message">这是你的评论内容</p>
+              <time>
+                <small class="sub">2021年8月8日</small>
+              </time>
+            </div>
+          </div>
+          <hr>
+
+          <div class="post-comment">
+            <div class="post-meta flex align-center">
+              <div class="post-poster">
+                <img src="" alt="">
+              </div>
+              <h4 class="sub">文章标题在这里，不管有多长都放的下</h4>
+              <button class="wrap radius ml-auto">
+                <a-info icon="good">20</a-info>
+              </button>
+            </div>
+
+            <div class="comment-info">
+              <p class="comment-message">这是你的评论内容</p>
+              <time>
+                <small class="sub">2021年8月8日</small>
+              </time>
+            </div>
+          </div>
+
         </div>
       </div>
     </main>
