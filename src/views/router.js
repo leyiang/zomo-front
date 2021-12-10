@@ -16,6 +16,11 @@ const router = new VueRouter({
         },
 
         {
+            path: "/register",
+            component: () => import("./register")
+        },
+
+        {
             path: "/category",
             component: () => import("./category")
         },
