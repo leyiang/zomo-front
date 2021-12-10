@@ -7,6 +7,9 @@ import ACrumb from "./components/ACrumb";
 import AInfo from "./components/AInfo";
 import AComment from "./components/AComment";
 import AFooter from "./components/AFooter";
+import AModal from "./components/AModal";
+import AnAlert from "./components/AnAlert";
+import InstallAlert from "./components/Alert";
 
 export default (Vue) => {
     Vue.component( "a-header", AHeader );
@@ -17,6 +20,10 @@ export default (Vue) => {
     Vue.component( "a-info", AInfo );
     Vue.component( "a-comment", AComment );
     Vue.component( "a-footer", AFooter );
+    Vue.component( "a-modal", AModal );
+    Vue.component( "a-alert", AnAlert );
+
+    InstallAlert( Vue );
 
     const base = Vue.prototype.api_base = "http://localhost/blog/api/wp-json";
 

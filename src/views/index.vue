@@ -1,5 +1,6 @@
 <template>
   <div class="blog-page home-page">
+
     <a-header class="with-margin"></a-header>
 
     <div class="layout-inner">
@@ -82,4 +83,9 @@
 </template>
 
 <script>
+export default {
+  created() {
+    this.message.success("注册成功");
+  }
+}
 </script>
