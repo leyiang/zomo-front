@@ -103,6 +103,7 @@
           <a-post></a-post>
           <a-post></a-post>
           <a-post></a-post>
+          <a-post></a-post>
         </a-post-list>
       </div>
 
@@ -132,6 +133,8 @@
         <a-comment></a-comment>
       </section>
     </div>
+
+    <a-footer></a-footer>
   </div>
 </template>
 

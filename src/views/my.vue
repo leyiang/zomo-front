@@ -134,7 +134,7 @@
   margin-right: 30px;
 }
 
-.comment-info {
+.my-page .comment-info {
   margin-left: 70px;
 }
 .comment-message {

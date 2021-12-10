@@ -65,6 +65,8 @@
         <a-post></a-post>
       </a-post-list>
     </div>
+
+    <a-footer></a-footer>
   </div>
 </template>
 

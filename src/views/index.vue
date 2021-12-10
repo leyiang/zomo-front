@@ -1,32 +1,83 @@
-<style>
-
-</style>
-
 <template>
-  <div class="blog-page">
+  <div class="blog-page home-page">
     <a-header class="with-margin"></a-header>
 
     <div class="layout-inner">
       <a-slider class="with-margin"></a-slider>
 
-      <div class="section">
-        <h2 class="section-title">UI/UX 教程</h2>
+      <div class="section-list flex flex-col gap-2">
+        <div class="section">
+          <h2 class="section-title">UI/UX 教程</h2>
 
-        <a-post-list>
-          <a-post></a-post>
-          <a-post></a-post>
-          <a-post></a-post>
-          <a-post></a-post>
-          <a-post></a-post>
-          <a-post></a-post>
-          <a-post></a-post>
-          <a-post></a-post>
-          <a-post></a-post>
-          <a-post></a-post>
-        </a-post-list>
+          <a-post-list>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+          </a-post-list>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">UI/UX 教程</h2>
+
+          <a-post-list>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+          </a-post-list>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">UI/UX 教程</h2>
+
+          <a-post-list>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+          </a-post-list>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">UI/UX 教程</h2>
+
+          <a-post-list>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+            <a-post></a-post>
+          </a-post-list>
+        </div>
       </div>
+
     </div>
 
+    <a-footer></a-footer>
   </div>
 </template>
 
