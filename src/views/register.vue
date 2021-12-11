@@ -113,13 +113,6 @@ export default {
         this.message.success("注册成功！点击确定跳到登录页~", () => {
           this.$router.push("/login");
         });
-      }).catch( e => {
-        const message = e?.response?.data?.message;
-        console.warn( e );
-
-        if( message ) {
-          console.log( message );
-        }
       });
     }
   }

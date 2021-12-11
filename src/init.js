@@ -10,6 +10,8 @@ import AFooter from "./components/AFooter";
 import AModal from "./components/AModal";
 import AnAlert from "./components/AnAlert";
 import InstallAlert from "./components/Alert";
+import event from "./event";
+import utils from "./utils";
 
 export default (Vue) => {
     Vue.component( "a-header", AHeader );
@@ -32,7 +34,22 @@ export default (Vue) => {
     });
 
     api.interceptors.request.use( config => {
-        // config.headers.Authorization = "Bearer " + "token";
+        const token = utils.get("token") || null;
+        if( token ) config.headers.Authorization = "Bearer " + token;
         return config;
     });
+
+    api.interceptors.response.use( res => {
+        return res;
+    }, err => {
+
+        const message = err?.response?.data?.message;
+        console.error( err );
+
+        if( message ) {
+            event.$emit("fails", message );
+        }
+
+        return Promise.reject( err );
+    })
 };

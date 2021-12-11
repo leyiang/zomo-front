@@ -63,18 +63,18 @@
     </div>
 
     <div class="login-form-container center">
-        <form class="flex flex-col align-center">
+        <form class="flex flex-col align-center" @submit.prevent="login">
           <router-link to="/">
             <img src="@/assets/logo-zomo.png" alt="logo-zomo" class="logo-zomo">
           </router-link>
 
           <div class="form-el flex flex-col">
-            <label for="email">请输入邮箱</label>
-            <input type="email" id="email" name="email" required class="radius" autocomplete="off">
+            <label for="username">用户名</label>
+            <input type="text" id="username" name="username" required class="radius" >
           </div>
 
           <div class="form-el flex flex-col">
-            <label for="password">请输入密码</label>
+            <label for="password">密码</label>
             <input type="password" id="password" name="password" required class="radius">
           </div>
 
@@ -86,6 +86,8 @@
 </template>
 
 <script>
+import utils from "../utils";
+
 export default {
   data() {
     return {
@@ -94,6 +96,21 @@ export default {
   },
 
   methods: {
+    login( event ) {
+      const data = new FormData( event.target );
+      const json = utils.toJSON( data );
+
+      this.api.post(this.api_base + "/jwt-auth/v1/token", json ).then( ({ data }) => {
+        utils.store("token", data.token );
+
+        this.$root.token = data.token;
+        // this.$root.getUserInfo();
+
+        this.message.success("登录成功~", () => {
+          this.$router.push("/my");
+        });
+      })
+    }
   }
 }
 </script>

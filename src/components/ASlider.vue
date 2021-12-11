@@ -1,6 +1,6 @@
 <style>
   .slider-wrapper {
-    height: 420px;
+    height: 450px;
     background-color: #dedeef;
     user-select: none;
   }

@@ -1,4 +1,5 @@
 import AnAlert from "./AnAlert";
+import event from "../event";
 
 export default ( Vue ) => {
     const Alert = Vue.extend( AnAlert );
@@ -20,4 +21,8 @@ export default ( Vue ) => {
             alert( msg, false, onclose );
         }
     }
+
+    event.$on("fails", msg => {
+        alert( msg, false );
+    });
 };

@@ -153,7 +153,7 @@
           <img src="../assets/p_img.png" alt="profile_image">
         </div>
 
-        <h4>Nickname</h4>
+        <h4>{{ $root.user.name }}</h4>
         <button class="btn btn-sub btn-sm cap btn-ghost" style="padding: .5rem 1rem">Update info</button>
       </div>
     </aside>
@@ -162,7 +162,7 @@
       <header class="my-header flex align-center">
 
         <div class="user-info ml-auto">
-          <span class="sub">Hi, Nickname.</span>
+          <span class="sub">Hi, {{ $root.user.name }}.</span>
 
           <button class="wrap">
             <i class="iconfont icon-sign-out"></i>

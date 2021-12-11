@@ -21,7 +21,7 @@ const router = new VueRouter({
         },
 
         {
-            path: "/category",
+            path: "/category/:id",
             component: () => import("./category")
         },
 
