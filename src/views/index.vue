@@ -7,73 +7,22 @@
       <a-slider class="with-margin"></a-slider>
 
       <div class="section-list flex flex-col" style="gap: 4rem;">
-        <div class="section">
-          <h2 class="section-title">UI/UX 教程</h2>
+
+
+        <div
+            class="section"
+            v-for="section in sections"
+        >
+          <h2 class="section-title">{{ section.title }}</h2>
 
           <a-post-list>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
+            <a-post
+                v-for="post in section.posts"
+                :post="post"
+            ></a-post>
           </a-post-list>
         </div>
 
-        <div class="section">
-          <h2 class="section-title">UI/UX 教程</h2>
-
-          <a-post-list>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-          </a-post-list>
-        </div>
-
-        <div class="section">
-          <h2 class="section-title">UI/UX 教程</h2>
-
-          <a-post-list>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-          </a-post-list>
-        </div>
-
-        <div class="section">
-          <h2 class="section-title">UI/UX 教程</h2>
-
-          <a-post-list>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-          </a-post-list>
-        </div>
       </div>
 
     </div>
@@ -86,12 +35,14 @@
 export default {
   data() {
     return {
-
+        sections: [],
     }
   },
 
   created() {
-
+      this.api.get("/sections").then( ({data}) => {
+          this.sections = data;
+      });
   }
 }
 </script>
