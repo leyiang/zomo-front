@@ -16,7 +16,6 @@
 }
 
 .post-content {
-  height: 800px;
   /*background-color: #FFF;*/
   flex: 3;
 }
@@ -56,42 +55,35 @@
 
       <a-crumb></a-crumb>
 
-      <h2 class="detail-title">文章标题在这里，不管有多长都放的下</h2>
+      <h2 class="detail-title">{{ post.post_name }}</h2>
 
       <div class="post-info flex gap-2">
         <div class="author flex gap-h">
           <span>作者</span>
           <router-link to="/">
-            <strong>刘木</strong>
+            <strong>{{ post.data.author.nickname }}</strong>
           </router-link>
         </div>
 
         <div class="flex gap-1">
-          <a-info icon="comment">20</a-info>
-          <a-info icon="good">20</a-info>
-          <a-info icon="browse">20</a-info>
+          <a-info icon="comment">{{ post.data.comment_count }}</a-info>
+          <a-info icon="good">{{ post.data.like }}</a-info>
+          <a-info icon="browse">{{ post.data.view }}</a-info>
         </div>
       </div>
 
       <div class="post-content-layout gap-1 flex">
-        <main class="post-content radius">
-          123123123
-        </main>
+        <main class="post-content radius" v-html="post.post_content"></main>
 
         <aside class="post-aside radius">asdas</aside>
       </div>
 
       <div class="post-tags flex gap-1">
-        <router-link to="/">
-          <span class="a-tag">UI/UX</span>
-        </router-link>
-
-        <router-link to="/">
-          <span class="a-tag">UI/UX</span>
-        </router-link>
-
-        <router-link to="/">
-          <span class="a-tag">UI/UX</span>
+        <router-link
+            to="/"
+            v-for="tag in post.data.tags"
+        >
+          <span class="a-tag">{{ tag.name }}</span>
         </router-link>
       </div>
 
@@ -99,11 +91,10 @@
         <h2 class="section-title">推荐阅读</h2>
 
         <a-post-list>
-          <a-post></a-post>
-          <a-post></a-post>
-          <a-post></a-post>
-          <a-post></a-post>
-          <a-post></a-post>
+          <a-post
+              v-for="post in posts"
+              :post="post"
+          ></a-post>
         </a-post-list>
       </div>
 
@@ -119,18 +110,12 @@
       <hr class="dashed">
 
       <section class="comment-section">
-        <h2 class="section-title">评论(323)</h2>
+        <h2 class="section-title">评论({{  post.data.comment_count }})</h2>
 
-        <a-comment>
-          <a-comment>
-            <a-comment>
-              <a-comment></a-comment>
-            </a-comment>
-          </a-comment>
-        </a-comment>
-
-        <a-comment></a-comment>
-        <a-comment></a-comment>
+        <a-comment
+            v-for="comment in comments"
+            :comment="comment"
+        ></a-comment>
       </section>
     </div>
 
@@ -139,4 +124,52 @@
 </template>
 
 <script>
+import utils from "../utils";
+
+export default {
+    data() {
+        return {
+            id: null,
+            ref: {},
+            comments: [],
+            post: {
+                data: {
+                    tags: [],
+                    author: {}
+                }
+            },
+            posts: [],
+        }
+    },
+
+    created() {
+        this.id = this.$route.params.id;
+        this.api.get("/detail/" + this.id ).then( ({data}) => {
+            this.post = data;
+            console.log( data );
+
+            const res = [];
+            const { comments } = data.data;
+
+            comments.forEach( comment => {
+                this.ref[ comment.comment_ID ] = comment;
+                comment.children = [];
+            });
+
+            comments.forEach( comment => {
+                if( comment.comment_parent !== "0" && !! this.ref[ comment.comment_parent ] ) {
+                    this.ref[ comment.comment_parent ].children.push( comment );
+                } else {
+                    res.push( comment );
+                }
+            });
+
+            this.comments = res;
+        });
+
+        this.api.get("/posts?per_page=5").then( ({data}) => {
+            this.posts = data;
+        });
+    }
+}
 </script>

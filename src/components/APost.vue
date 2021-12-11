@@ -20,6 +20,13 @@
     background-color: #E5E5E5;
 }
 
+.preview-content img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
 .detail .info-list {
     gap: 1rem;
 }
@@ -30,23 +37,30 @@
 </style>
 
 <template>
-    <div class="post-item radius">
-        <div class="preview">
-            <div class="preview-content radius">
-            </div>
-        </div>
-
-        <div class="detail">
-            <h4 class="post-title">{{ post.title.rendered }}</h4>
-
-            <div class="info-list flex">
-                <a-info icon="comment">20</a-info>
-                <a-info icon="good">20</a-info>
-                <a-info icon="browse">20</a-info>
+    <router-link :to="'/detail/' + post.id">
+        <div class="post-item radius">
+            <div class="preview">
+                <div class="preview-content radius">
+                    <img
+                        v-if="post.meta.preview"
+                        :src="post.meta.preview"
+                        alt="PREVIEW"
+                    >
+                </div>
             </div>
 
+            <div class="detail">
+                <h4 class="post-title">{{ post.title.rendered }}</h4>
+
+                <div class="info-list flex">
+                    <a-info icon="comment">{{ post.meta.comment_count }}</a-info>
+                    <a-info icon="good">{{ post.meta.like }}</a-info>
+                    <a-info icon="browse">{{ post.meta.view }}</a-info>
+                </div>
+
+            </div>
         </div>
-    </div>
+    </router-link>
 </template>
 
 <script>
@@ -59,8 +73,7 @@ export default {
     },
 
     created() {
-
-        console.log( this.post );
+        console.log(this.post);
     }
 }
 </script>
