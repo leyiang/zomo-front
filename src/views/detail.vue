@@ -100,7 +100,7 @@
 
       <hr class="dashed">
 
-      <form action="" class="comment-form flex flex-col gap-1">
+      <form class="comment-form flex flex-col gap-1" @submit.prevent="reply">
         <div class="form-el">
           <textarea class="flex w-full radius" name="content" required></textarea>
         </div>
@@ -115,6 +115,7 @@
         <a-comment
             v-for="comment in comments"
             :comment="comment"
+            @reply="reply"
         ></a-comment>
       </section>
     </div>
@@ -144,32 +145,51 @@ export default {
 
     created() {
         this.id = this.$route.params.id;
-        this.api.get("/detail/" + this.id ).then( ({data}) => {
-            this.post = data;
-            console.log( data );
-
-            const res = [];
-            const { comments } = data.data;
-
-            comments.forEach( comment => {
-                this.ref[ comment.comment_ID ] = comment;
-                comment.children = [];
-            });
-
-            comments.forEach( comment => {
-                if( comment.comment_parent !== "0" && !! this.ref[ comment.comment_parent ] ) {
-                    this.ref[ comment.comment_parent ].children.push( comment );
-                } else {
-                    res.push( comment );
-                }
-            });
-
-            this.comments = res;
-        });
+        this.fetchData();
 
         this.api.get("/posts?per_page=5").then( ({data}) => {
             this.posts = data;
         });
+    },
+
+    methods: {
+        fetchData() {
+            this.api.get("/detail/" + this.id ).then( ({data}) => {
+                this.post = data;
+                console.log( data );
+
+                const res = [];
+                const { comments } = data.data;
+
+                comments.forEach( comment => {
+                    this.ref[ comment.comment_ID ] = comment;
+                    comment.children = [];
+                });
+
+                comments.forEach( comment => {
+                    if( comment.comment_parent !== "0" && !! this.ref[ comment.comment_parent ] ) {
+                        this.ref[ comment.comment_parent ].children.push( comment );
+                    } else {
+                        res.push( comment );
+                    }
+                });
+
+                this.comments = res;
+            });
+        },
+
+        reply(event, parent=null, callback) {
+            const data = new FormData( event.target );
+            data.append("post", this.id );
+
+            if( parent ) data.append("parent", parent);
+
+            this.api.post("/comments", data).then( r => {
+                this.message.success("留言成功！");
+                this.fetchData();
+                if( callback ) callback();
+            });
+        }
     }
 }
 </script>

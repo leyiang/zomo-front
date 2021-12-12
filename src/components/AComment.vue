@@ -61,15 +61,24 @@
                     </button>
                 </div>
 
-                <div class="reply-section flex flex-col gap-h" v-if="reply">
-                    <textarea class="w-full radius"></textarea>
+                <form
+                    class="reply-section flex flex-col gap-h"
+                    v-if="reply"
+                    @submit.prevent="$emit('reply', $event, comment.comment_ID, closeReply )"
+                >
+                    <textarea class="w-full radius" name="content" required></textarea>
                     <div class="ml-auto flex gap-1">
-                        <button class="btn btn-sm btn-sub" @click="closeReply">取消</button>
+                        <button class="btn btn-sm btn-sub" @click="closeReply" type="button">取消</button>
                         <button class="btn btn-sm">回复评论</button>
                     </div>
-                </div>
+                </form>
 
-                <a-comment v-for="child in comment.children" :comment="child"></a-comment>
+                <a-comment
+                    v-for="child in comment.children"
+                    :comment="child"
+                    :parent="comment.id"
+                    @reply="(e, id, fn) => $emit('reply', e, id, fn)"
+                ></a-comment>
             </div>
         </div>
     </div>
@@ -83,6 +92,11 @@ export default {
             default: () => ({
                 children: []
             })
+        },
+
+        parent: {
+            type: Number,
+            default: 0,
         }
     },
 
