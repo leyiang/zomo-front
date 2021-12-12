@@ -41,23 +41,23 @@ new Vue({
     },
 
     getCategories() {
-      this.api.get("/categories").then( ({data}) => {
+      this.api.get("/menu").then( ({data}) => {
         this.categories = data;
-
-        let ref = {};
-        this.categories.forEach( category => {
-          ref[ category.id ] = category;
-          category.children = [];
-        });
-
-        this.categories.forEach( category => {
-          if( category.parent !== 0 && ref[ category.parent ]) {
-            ref[ category.parent ].children.push( category );
-            utils.splice( this.categories, category );
-          }
-        });
-
-        this.categoryREF = ref;
+        //
+        // let ref = {};
+        // this.categories.forEach( category => {
+        //   ref[ category.id ] = category;
+        //   category.children = [];
+        // });
+        //
+        // this.categories.forEach( category => {
+        //   if( category.parent !== 0 && ref[ category.parent ]) {
+        //     ref[ category.parent ].children.push( category );
+        //     utils.splice( this.categories, category );
+        //   }
+        // });
+        //
+        // this.categoryREF = ref;
       });
     }
   },

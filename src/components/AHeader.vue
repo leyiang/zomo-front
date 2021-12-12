@@ -44,7 +44,7 @@
 
                         :to="'/category/' + category.id"
                         class="category-link center h-full"
-                    >{{ category.name }}</router-link>
+                    >{{ category.title }}</router-link>
 
 
                     <!--                            current-category-->
