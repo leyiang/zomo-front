@@ -33,11 +33,20 @@
 
 .post-title {
     margin: 20px 0 10px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.post-link {
+    min-width: 0;
 }
 </style>
 
 <template>
-    <router-link :to="'/detail/' + post.id">
+    <router-link :to="'/detail/' + post.id" class="post-link">
         <div class="post-item radius">
             <div class="preview">
                 <div class="preview-content radius">
