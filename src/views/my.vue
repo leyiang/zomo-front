@@ -176,7 +176,7 @@
           <div class="card my-points radius">
             <div class="flex flex-col gap-1">
               <h4>我的积分</h4>
-              <h2>128</h2>
+              <h2>{{ detail.points }}</h2>
             </div>
 
           </div>
@@ -185,8 +185,8 @@
             <h4 style="margin-bottom: 40px;">如何获得积分？</h4>
 
             <div class="flex flex-col gap-h">
-              <p>邀请朋友注册琢磨可以获得<strong>10</strong>积分</p>
-              <p>每日签到可以获得<strong>2</strong>积分</p>
+              <p>邀请朋友注册琢磨可以获得<strong>{{ detail.invite_points }}</strong>积分</p>
+              <p>每日签到可以获得<strong>{{ detail.checkin_points }}</strong>积分</p>
             </div>
 
             <div class="flex gap-1 ml-auto mt-auto btn-list">
@@ -197,27 +197,27 @@
           </div>
         </div>
 
-        <div class="section">
-          <h2 class="section-title">我收藏的</h2>
-          <a-post-list>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-          </a-post-list>
-        </div>
+<!--        <div class="section">-->
+<!--          <h2 class="section-title">我收藏的</h2>-->
+<!--          <a-post-list>-->
+<!--            <a-post></a-post>-->
+<!--            <a-post></a-post>-->
+<!--            <a-post></a-post>-->
+<!--            <a-post></a-post>-->
+<!--            <a-post></a-post>-->
+<!--          </a-post-list>-->
+<!--        </div>-->
 
-        <div class="section">
-          <h2 class="section-title">我点赞的</h2>
-          <a-post-list>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-            <a-post></a-post>
-          </a-post-list>
-        </div>
+<!--        <div class="section">-->
+<!--          <h2 class="section-title">我点赞的</h2>-->
+<!--          <a-post-list>-->
+<!--            <a-post></a-post>-->
+<!--            <a-post></a-post>-->
+<!--            <a-post></a-post>-->
+<!--            <a-post></a-post>-->
+<!--            <a-post></a-post>-->
+<!--          </a-post-list>-->
+<!--        </div>-->
 
         <div class="section">
           <h2 class="section-title">我评论的</h2>
@@ -288,4 +288,17 @@
 </template>
 
 <script>
+export default {
+    data() {
+        return {
+            detail: {}
+        }
+    },
+
+    created() {
+        this.api.get("/my").then( ({data}) => {
+            this.detail = data;
+        });
+    }
+}
 </script>

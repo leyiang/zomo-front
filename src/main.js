@@ -14,7 +14,7 @@ new Vue({
   data() {
     return {
       token: null,
-      user: null,
+      user: {},
 
       categories: [],
       categoryREF: {},
