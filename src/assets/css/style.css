@@ -125,3 +125,7 @@ textarea {
 .cap {
     border-radius: 10rem;
 }
+.btn:disabled {
+    filter: grayscale(1);
+    cursor: not-allowed;
+}
