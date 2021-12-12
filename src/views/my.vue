@@ -1,301 +1,279 @@
 <style>
 .my-aside {
-  width: 400px;
-  background-color: #254BD3;
+    width: 400px;
+    background-color: #254BD3;
 }
 
 .my-header {
-  height: 40px;
-  background-color: #FFF;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  padding: 0 1rem;
+    height: 40px;
+    background-color: #FFF;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    padding: 0 1rem;
 }
 
 .main-content {
-  flex: 1;
-  overflow-y: scroll;
-  padding: 1rem 60px;
+    flex: 1;
+    overflow-y: scroll;
+    padding: 1rem 60px;
 }
 
 .main-content::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 .main-content::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
 }
 
 .my-points {
-  flex: 1;
-  height: 300px;
-  background: url("../assets/point-bg.svg") bottom right no-repeat;
-  padding: 2rem 4rem;
-  box-sizing: border-box;
+    flex: 1;
+    height: 300px;
+    background: url("../assets/point-bg.svg") bottom right no-repeat;
+    padding: 2rem 4rem;
+    box-sizing: border-box;
 }
 
 .my-points h4 {
-  font-size: 24px;
-  margin: 0;
+    font-size: 24px;
+    margin: 0;
 }
 
 .my-points h2 {
-  color: var(--main-color);
-  font-size: 42px;
-  margin: 0;
+    color: var(--main-color);
+    font-size: 42px;
+    margin: 0;
 }
 
 .how-to {
-  flex: 2;
+    flex: 2;
 }
 
 .card {
-  background-color: #FFF;
+    background-color: #FFF;
 }
 
 .how-to {
-  padding: 2rem;
-  font-size: 22px;
+    padding: 2rem;
+    font-size: 22px;
 }
 
 .how-to strong {
-  color: var(--main-color);
-  margin: 0 .5rem;
+    color: var(--main-color);
+    margin: 0 .5rem;
 }
 
 .how-to h4,
 .how-to p {
-  margin: 0;
+    margin: 0;
 }
 
 .how-to .btn {
-  width: 200px;
+    width: 200px;
 }
 
 .how-to .btn-list {
-  position: relative;
+    position: relative;
 }
 
 .how-to .btn-list img {
-  position: absolute;
-  width: 80px;
-  bottom: calc( 100% - 5px );
-  right: 60px;
+    position: absolute;
+    width: 80px;
+    bottom: calc(100% - 5px);
+    right: 60px;
 }
 
 .my-aside {
-  padding-top: 70px;
-  color: #FFF;
+    padding-top: 70px;
+    color: #FFF;
 }
 
 .my-aside .avatar {
-  width: 140px;
-  height: 140px;
-  position: relative;
+    width: 140px;
+    height: 140px;
+    position: relative;
 }
 
 .my-aside img {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 
 .my-aside h4 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 400;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 400;
 }
 
 .my-aside .wrap {
-  position: absolute;
-  top: 5px;
-  right: 0;
-  padding: 0;
-  border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    padding: 0;
+    border-radius: 50%;
 }
 
 .edit {
-  color: #FFF;
-  font-weight: 700;
-  background-color: #333;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+    color: #FFF;
+    font-weight: 700;
+    background-color: #333;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
 }
 
 .edit:hover {
-  background-color: #444;
+    background-color: #444;
 }
 
 .post-poster {
-  width: 40px;
-  height: 40px;
-  background-color: #444;
-  border-radius: 5px;
-  margin-right: 30px;
+    width: 40px;
+    height: 40px;
+    background-color: #444;
+    border-radius: 5px;
+    margin-right: 30px;
+    overflow: hidden;
+}
+
+.post-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .my-page .comment-info {
-  margin-left: 70px;
+    margin-left: 70px;
 }
+
 .comment-message {
-  margin: 0 0 .5rem;
+    margin: 0 0 .5rem;
 }
 </style>
 
 <template>
-  <div class="my-page flex h-full">
-    <aside class="my-aside">
-      <div class="flex flex-col gap-2 align-center">
-        <div class="avatar">
-          <button class="wrap">
-            <span class="edit center"><i class="iconfont icon-upload"></i></span>
-          </button>
-          <img src="../assets/p_img.png" alt="profile_image">
-        </div>
+    <div class="my-page flex h-full">
+        <aside class="my-aside">
+            <div class="flex flex-col gap-2 align-center">
+                <div class="avatar">
+                    <button class="wrap">
+                        <span class="edit center"><i class="iconfont icon-upload"></i></span>
+                    </button>
+                    <img src="../assets/p_img.png" alt="profile_image">
+                </div>
 
-        <h4>{{ $root.user.name }}</h4>
-        <button class="btn btn-sub btn-sm cap btn-ghost" style="padding: .5rem 1rem">Update info</button>
-      </div>
-    </aside>
-
-    <main class="my-main f1 flex flex-col">
-      <header class="my-header flex align-center">
-
-        <div class="user-info ml-auto">
-          <span class="sub">Hi, {{ $root.user.name }}.</span>
-
-          <button class="wrap">
-            <i class="iconfont icon-sign-out"></i>
-          </button>
-        </div>
-      </header>
-
-      <div class="main-content flex flex-col" style="gap: 4rem;">
-
-        <div class="flex gap-1">
-          <div class="card my-points radius">
-            <div class="flex flex-col gap-1">
-              <h4>我的积分</h4>
-              <h2>{{ detail.points }}</h2>
+                <h4>{{ $root.user.name }}</h4>
+                <button class="btn btn-sub btn-sm cap btn-ghost" style="padding: .5rem 1rem">Update info</button>
             </div>
+        </aside>
 
-          </div>
+        <main class="my-main f1 flex flex-col">
+            <header class="my-header flex align-center">
 
-          <div class="card how-to radius flex flex-col">
-            <h4 style="margin-bottom: 40px;">如何获得积分？</h4>
+                <div class="user-info ml-auto">
+                    <span class="sub">Hi, {{ $root.user.name }}.</span>
 
-            <div class="flex flex-col gap-h">
-              <p>邀请朋友注册琢磨可以获得<strong>{{ detail.invite_points }}</strong>积分</p>
-              <p>每日签到可以获得<strong>{{ detail.checkin_points }}</strong>积分</p>
+                    <button class="wrap">
+                        <i class="iconfont icon-sign-out"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="main-content flex flex-col" style="gap: 4rem;">
+
+                <div class="flex gap-1">
+                    <div class="card my-points radius">
+                        <div class="flex flex-col gap-1">
+                            <h4>我的积分</h4>
+                            <h2>{{ detail.points }}</h2>
+                        </div>
+
+                    </div>
+
+                    <div class="card how-to radius flex flex-col">
+                        <h4 style="margin-bottom: 40px;">如何获得积分？</h4>
+
+                        <div class="flex flex-col gap-h">
+                            <p>邀请朋友注册琢磨可以获得<strong>{{ detail.invite_points }}</strong>积分</p>
+                            <p>每日签到可以获得<strong>{{ detail.checkin_points }}</strong>积分</p>
+                        </div>
+
+                        <div class="flex gap-1 ml-auto mt-auto btn-list">
+                            <img src="../assets/sprite.svg" alt="sprite">
+                            <button class="btn">复制邀请链接</button>
+                            <button
+                                class="btn"
+                                @click="checkin"
+                                :disabled="detail.checked_in"
+                            >{{ detail.checked_in ? "今天已经签到了~" : "点击签到" }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--        <div class="section">-->
+                <!--          <h2 class="section-title">我收藏的</h2>-->
+                <!--          <a-post-list>-->
+                <!--            <a-post></a-post>-->
+                <!--            <a-post></a-post>-->
+                <!--            <a-post></a-post>-->
+                <!--            <a-post></a-post>-->
+                <!--            <a-post></a-post>-->
+                <!--          </a-post-list>-->
+                <!--        </div>-->
+
+                <!--        <div class="section">-->
+                <!--          <h2 class="section-title">我点赞的</h2>-->
+                <!--          <a-post-list>-->
+                <!--            <a-post></a-post>-->
+                <!--            <a-post></a-post>-->
+                <!--            <a-post></a-post>-->
+                <!--            <a-post></a-post>-->
+                <!--            <a-post></a-post>-->
+                <!--          </a-post-list>-->
+                <!--        </div>-->
+
+                <div class="section">
+                    <h2 class="section-title">我评论的</h2>
+
+                    <template v-for="comment in detail.comments">
+                        <div class="post-comment">
+                            <div class="post-meta flex align-center">
+                                <div class="post-poster">
+                                    <img :src="comment.post.preview" alt="Post Preview">
+                                </div>
+                                <router-link :to="'/detail/' + comment.post.id ">
+                                    <h4 class="sub">{{ comment.post.title }}</h4>
+                                </router-link>
+
+                                <button class="wrap radius ml-auto">
+                                    <a-info icon="good">20</a-info>
+                                </button>
+                            </div>
+
+                            <div class="comment-info">
+                                <p class="comment-message">{{ comment.content }}</p>
+                                <time>
+                                    <small class="sub">{{ comment.date }}</small>
+                                </time>
+                            </div>
+                        </div>
+                        <hr>
+                    </template>
+
+                </div>
             </div>
-
-            <div class="flex gap-1 ml-auto mt-auto btn-list">
-              <img src="../assets/sprite.svg" alt="sprite">
-              <button class="btn">复制邀请链接</button>
-              <button
-                  class="btn"
-                  @click="checkin"
-                  :disabled="detail.checked_in"
-              >{{ detail.checked_in ? "今天已经签到了~" : "点击签到" }}</button>
-            </div>
-          </div>
-        </div>
-
-<!--        <div class="section">-->
-<!--          <h2 class="section-title">我收藏的</h2>-->
-<!--          <a-post-list>-->
-<!--            <a-post></a-post>-->
-<!--            <a-post></a-post>-->
-<!--            <a-post></a-post>-->
-<!--            <a-post></a-post>-->
-<!--            <a-post></a-post>-->
-<!--          </a-post-list>-->
-<!--        </div>-->
-
-<!--        <div class="section">-->
-<!--          <h2 class="section-title">我点赞的</h2>-->
-<!--          <a-post-list>-->
-<!--            <a-post></a-post>-->
-<!--            <a-post></a-post>-->
-<!--            <a-post></a-post>-->
-<!--            <a-post></a-post>-->
-<!--            <a-post></a-post>-->
-<!--          </a-post-list>-->
-<!--        </div>-->
-
-        <div class="section">
-          <h2 class="section-title">我评论的</h2>
-
-          <div class="post-comment">
-            <div class="post-meta flex align-center">
-              <div class="post-poster">
-                <img src="" alt="">
-              </div>
-              <h4 class="sub">文章标题在这里，不管有多长都放的下</h4>
-              <button class="wrap radius ml-auto">
-                <a-info icon="good">20</a-info>
-              </button>
-            </div>
-
-            <div class="comment-info">
-              <p class="comment-message">这是你的评论内容</p>
-              <time>
-                <small class="sub">2021年8月8日</small>
-              </time>
-            </div>
-          </div>
-          <hr>
-
-          <div class="post-comment">
-            <div class="post-meta flex align-center">
-              <div class="post-poster">
-                <img src="" alt="">
-              </div>
-              <h4 class="sub">文章标题在这里，不管有多长都放的下</h4>
-              <button class="wrap radius ml-auto">
-                <a-info icon="good">20</a-info>
-              </button>
-            </div>
-
-            <div class="comment-info">
-              <p class="comment-message">这是你的评论内容</p>
-              <time>
-                <small class="sub">2021年8月8日</small>
-              </time>
-            </div>
-          </div>
-          <hr>
-
-          <div class="post-comment">
-            <div class="post-meta flex align-center">
-              <div class="post-poster">
-                <img src="" alt="">
-              </div>
-              <h4 class="sub">文章标题在这里，不管有多长都放的下</h4>
-              <button class="wrap radius ml-auto">
-                <a-info icon="good">20</a-info>
-              </button>
-            </div>
-
-            <div class="comment-info">
-              <p class="comment-message">这是你的评论内容</p>
-              <time>
-                <small class="sub">2021年8月8日</small>
-              </time>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </main>
-  </div>
+        </main>
+    </div>
 </template>
 
 <script>
 export default {
     data() {
         return {
-            detail: {}
+            detail: {
+                comments: [],
+            }
         }
     },
 
@@ -305,15 +283,15 @@ export default {
 
     methods: {
         fetchData() {
-            this.api.get("/my").then( ({data}) => {
+            this.api.get("/my").then(({data}) => {
                 this.detail = data;
-                console.log( data );
+                console.log(data);
             });
         },
 
         checkin() {
-            this.api.get('/checkin').then( r => {
-                console.log( r.data );
+            this.api.get('/checkin').then(r => {
+                console.log(r.data);
                 this.fetchData();
                 this.message.success("签到成功！");
             });
