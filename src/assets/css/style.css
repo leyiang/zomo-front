@@ -76,7 +76,8 @@ hr {
 
 hr.dashed {
     border: none;
-    border-bottom: 1px dashed #D1D1D1;
+    /*border-bottom: 1px dashed #D1D1D1;*/
+    border-bottom: 1px dashed transparent;
 }
 
 button.wrap {

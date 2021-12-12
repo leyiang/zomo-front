@@ -3,6 +3,14 @@
     box-sizing: border-box;
     padding: 1rem;
     background-color: #FFF;
+    border: 1px solid transparent;
+    transition: all .3s;
+}
+
+.post-item:hover {
+    border-color: #dbdbdb;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
 }
 
 .post-item .preview {
