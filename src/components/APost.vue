@@ -80,9 +80,5 @@ export default {
             default: () => ({})
         }
     },
-
-    created() {
-        console.log(this.post);
-    }
 }
 </script>

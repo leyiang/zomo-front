@@ -53,7 +53,7 @@
 
     <div class="layout-inner">
 
-      <a-crumb></a-crumb>
+      <a-crumb :list="crumb"></a-crumb>
 
       <h2 class="detail-title">{{ post.post_title }}</h2>
 
@@ -139,7 +139,9 @@ export default {
                     author: {}
                 }
             },
+
             posts: [],
+            crumb: [],
         }
     },
 
@@ -156,7 +158,11 @@ export default {
         fetchData() {
             this.api.get("/detail/" + this.id ).then( ({data}) => {
                 this.post = data;
-                console.log( data );
+
+                if( data?.data?.category ) {
+                    const category = data.data.category;
+                    this.crumb = [ { title: category.name, link: "/category/" + category.id }, { title: data.post_title } ];
+                }
 
                 const res = [];
                 const { comments } = data.data;

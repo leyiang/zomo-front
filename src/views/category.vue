@@ -36,7 +36,7 @@
 
         <div class="layout-inner">
 
-            <a-crumb></a-crumb>
+            <a-crumb :list="crumb"></a-crumb>
 
             <div
                 class="flex"
@@ -75,6 +75,7 @@ export default {
             id: null,
             category: {},
             posts: [],
+            crumb: [],
         }
     },
 
@@ -83,9 +84,10 @@ export default {
 
         this.api.get("/categories/" + this.id ).then( ({data}) => {
             this.category = data;
+            this.crumb = [ { title: data.name } ];
         });
 
-        this.api.get("posts?categories=" + this.id ).then( ({data}) => {
+        this.api.get("posts?per_page=40&categories=" + this.id ).then( ({data}) => {
             this.posts = data;
         });
     }
