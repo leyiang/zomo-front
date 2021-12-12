@@ -192,7 +192,7 @@
             <div class="flex gap-1 ml-auto mt-auto btn-list">
               <img src="../assets/sprite.svg" alt="sprite">
               <button class="btn">复制邀请链接</button>
-              <button class="btn">点击签到</button>
+              <button class="btn" @click="checkin">点击签到</button>
             </div>
           </div>
         </div>
@@ -296,9 +296,22 @@ export default {
     },
 
     created() {
-        this.api.get("/my").then( ({data}) => {
-            this.detail = data;
-        });
+        this.fetchData();
+    },
+
+    methods: {
+        fetchData() {
+            this.api.get("/my").then( ({data}) => {
+                this.detail = data;
+            });
+        },
+
+        checkin() {
+            this.api.get('/checkin').then( r => {
+                this.fetchData();
+                this.message.success("签到成功！");
+            });
+        }
     }
 }
 </script>
