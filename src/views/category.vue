@@ -38,14 +38,14 @@
 
             <a-crumb :list="crumb"></a-crumb>
 
-            <div
-                class="flex"
-                style="gap: 1rem; margin-bottom: 2rem;"
-            >
-                <button
-                    class="btn category-btn"
-                >1231231</button>
-            </div>
+<!--            <div-->
+<!--                class="flex"-->
+<!--                style="gap: 1rem; margin-bottom: 2rem;"-->
+<!--            >-->
+<!--                <button-->
+<!--                    class="btn category-btn"-->
+<!--                >1231231</button>-->
+<!--            </div>-->
 
             <p class="category-desc radius">{{ category.description }}</p>
 
@@ -81,6 +81,7 @@ export default {
 
     created() {
         this.id = this.$route.params.id;
+        this.$root.currentCategoryID = this.id;
 
         this.api.get("/categories/" + this.id ).then( ({data}) => {
             this.category = data;

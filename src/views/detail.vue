@@ -193,6 +193,7 @@ export default {
             this.api.post("/comments", data).then( r => {
                 this.message.success("留言成功！");
                 this.fetchData();
+                event.target.reset();
                 if( callback ) callback();
             });
         }

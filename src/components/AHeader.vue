@@ -43,15 +43,9 @@
                         v-for="category in $root.categories"
 
                         :to="'/category/' + category.id"
-                        class="category-link center h-full"
+                        :class="['category-link center h-full', category.id === $root.currentCategoryID ? 'current-category' : '' ]"
                     >{{ category.title }}</router-link>
 
-
-                    <!--                            current-category-->
-
-                    <!--                    <router-link to="/category" class="category-link center h-full">PS教程</router-link>-->
-<!--                    <router-link to="/category" class="category-link center h-full">网页设计</router-link>-->
-<!--                    <router-link to="/category" class="category-link center h-full">平面设计</router-link>-->
                 </div>
             </div>
 
