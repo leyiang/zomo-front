@@ -1,4 +1,44 @@
 <style>
+.like {
+    font-size: 1rem;
+}
+
+.like span:last-of-type {
+    margin-left: -10px;
+}
+
+.heart-active {
+    animation-timing-function: steps(28);
+    animation-name: heart-burst;
+    animation-duration: .8s;
+    animation-iteration-count: 1;
+    display: inline-block;
+    animation-fill-mode: forwards;
+}
+
+@keyframes heart-burst {
+    0% {
+        background-position: left
+    }
+
+    100% {
+        background-position: right
+    }
+}
+
+.heart {
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    background-image: url("../assets/like.png");
+}
+
+.heart-wrap {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
 .a-comment-item .splitter {
     width: 2px;
     background-color: #D7D7D7;
@@ -43,6 +83,11 @@
             </div>
 
             <span>{{ comment.comment_author }} - <span class="sub">{{ comment.ago }}</span></span>
+
+            <button class="like flex align-center ml-auto heart-wrap">
+                <span :class="['heart', 'heart-active']"></span>
+                <span>123</span>
+            </button>
         </div>
 
         <div class="comment-list flex">
@@ -52,12 +97,8 @@
                 <div class="comment-message">{{ comment.comment_content }}</div>
 
                 <div class="flex">
-                    <button class="wrap radius">
-                        <a-info icon="good">{{ comment.like }}</a-info>
-                    </button>
-
-                    <button class="wrap radius" @click="toggleReply">
-                        <a-info icon="comment">Reply</a-info>
+                    <button class="wrap radius" @click="toggleReply" style="margin-left: -15px">
+                        <a-info icon="comment">回复</a-info>
                     </button>
                 </div>
 
