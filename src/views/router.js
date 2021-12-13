@@ -50,11 +50,14 @@ router.beforeEach( (to, from, next) => {
         const block = animationContainer.querySelectorAll(".block")[2];
 
         const start = () => {
-            next();
-            animationContainer.classList.toggle("start");
-            animationContainer.classList.toggle("end");
-
             block.removeEventListener("animationend", start);
+
+            next();
+
+            setTimeout(() => {
+                animationContainer.classList.toggle("start");
+                animationContainer.classList.toggle("end");
+            }, 500 );
         };
 
         block.addEventListener("animationend", start);
