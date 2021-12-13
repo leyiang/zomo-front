@@ -55,8 +55,6 @@
 
       <a-crumb :list="crumb"></a-crumb>
 
-      <h2 class="detail-title">{{ post.post_title }}</h2>
-
       <div class="post-info flex gap-2">
         <div class="author flex gap-h">
           <span>作者</span>

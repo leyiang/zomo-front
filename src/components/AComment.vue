@@ -84,9 +84,12 @@
 
             <span>{{ comment.comment_author }} - <span class="sub">{{ comment.ago }}</span></span>
 
-            <button class="like flex align-center ml-auto heart-wrap">
-                <span :class="['heart', 'heart-active']"></span>
-                <span>123</span>
+            <button
+                class="like flex align-center ml-auto heart-wrap"
+                @click="likeComment"
+            >
+                <span :class="['heart', comment.liked_by_current ? 'heart-active' : '' ]"></span>
+                <span>{{ comment.like }}</span>
             </button>
         </div>
 
@@ -158,6 +161,23 @@ export default {
 
         closeReply() {
             this.reply = false;
+        },
+
+        likeComment() {
+            let back = 1;
+            if( this.comment.liked_by_current ) {
+                this.comment.liked_by_current = false;
+                this.comment.like --;
+            } else {
+                this.comment.liked_by_current = true;
+                this.comment.like ++;
+                back = -1;
+            }
+
+            this.api.get("/like_comment/" + this.comment.comment_ID).catch( e => {
+                this.comment.liked_by_current = back !== -1
+                this.comment.like += back;
+            });
         }
     }
 }
