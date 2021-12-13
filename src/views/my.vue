@@ -247,7 +247,7 @@
                                 </router-link>
 
                                 <button class="wrap radius ml-auto">
-                                    <a-info icon="good">20</a-info>
+                                    <a-info icon="good">{{ comment.like }}</a-info>
                                 </button>
                             </div>
 

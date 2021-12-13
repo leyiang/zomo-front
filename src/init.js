@@ -9,6 +9,7 @@ import AComment from "./components/AComment";
 import AFooter from "./components/AFooter";
 import AModal from "./components/AModal";
 import AnAlert from "./components/AnAlert";
+import AHeart from "./components/AHeart";
 import InstallAlert from "./components/Alert";
 import event from "./event";
 import utils from "./utils";
@@ -24,6 +25,7 @@ export default (Vue) => {
     Vue.component( "a-footer", AFooter );
     Vue.component( "a-modal", AModal );
     Vue.component( "a-alert", AnAlert );
+    Vue.component( "a-heart", AHeart );
 
     InstallAlert( Vue );
 

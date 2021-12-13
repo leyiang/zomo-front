@@ -1,44 +1,4 @@
 <style>
-.like {
-    font-size: 1rem;
-}
-
-.like span:last-of-type {
-    margin-left: -10px;
-}
-
-.heart-active {
-    animation-timing-function: steps(28);
-    animation-name: heart-burst;
-    animation-duration: .8s;
-    animation-iteration-count: 1;
-    display: inline-block;
-    animation-fill-mode: forwards;
-}
-
-@keyframes heart-burst {
-    0% {
-        background-position: left
-    }
-
-    100% {
-        background-position: right
-    }
-}
-
-.heart {
-    width: 60px;
-    height: 60px;
-    display: inline-block;
-    background-image: url("../assets/like.png");
-}
-
-.heart-wrap {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-}
-
 .a-comment-item .splitter {
     width: 2px;
     background-color: #D7D7D7;
@@ -83,14 +43,11 @@
             </div>
 
             <span>{{ comment.comment_author }} - <span class="sub">{{ comment.ago }}</span></span>
-
-            <button
-                class="like flex align-center ml-auto heart-wrap"
-                @click="likeComment"
-            >
-                <span :class="['heart', comment.liked_by_current ? 'heart-active' : '' ]"></span>
-                <span>{{ comment.like }}</span>
-            </button>
+            <a-heart
+                @like="likeComment"
+                :like="comment.like"
+                :active="comment.liked_by_current"
+            ></a-heart>
         </div>
 
         <div class="comment-list flex">
@@ -142,10 +99,6 @@ export default {
             type: Number,
             default: 0,
         }
-    },
-
-    created() {
-        console.log( this.comment );
     },
 
     data() {
