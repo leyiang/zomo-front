@@ -34,7 +34,8 @@
     background-color: #222;
     width: 100%;
     flex: 1;
-    transform: translateX(-100%);
+    /*transform: translateX(-100%);*/
+    transform: translateX(0);
     animation: 700ms ease-in-out both;
     color: #FFF;
 }
@@ -78,3 +79,20 @@
 .end .block {
     animation-name: in;
 }
+
+/*.end.page-transition,*/
+/*.start.page-transition {*/
+/*    pointer-events: all;*/
+/*}*/
+
+/*.path-animation {*/
+/*    stroke-dasharray: 1000;*/
+/*    stroke-dashoffset: 1000;*/
+/*    animation: dash 1s ease-in-out forwards infinite;*/
+/*}*/
+
+/*@keyframes dash {*/
+/*    to {*/
+/*        stroke-dashoffset: 0;*/
+/*    }*/
+/*}*/
