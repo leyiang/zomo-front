@@ -23,9 +23,11 @@ new Vue({
   },
 
   created() {
-    this.getToken();
-    this.getUserInfo();
     this.getCategories();
+
+    // this.getToken().then( () => {
+    //   this.getUserInfo();
+    // });
   },
 
   methods: {

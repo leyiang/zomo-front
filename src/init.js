@@ -44,9 +44,10 @@ export default (Vue) => {
     }, err => {
 
         const message = err?.response?.data?.message;
+
         console.error( err );
 
-        if( message ) {
+        if( message && err.response.status !== 401 ) {
             event.$emit("fails", message );
         }
 

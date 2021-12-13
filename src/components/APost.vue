@@ -62,6 +62,7 @@
                         v-if="post.meta.preview"
                         :src="post.meta.preview"
                         alt="PREVIEW"
+                        loading="lazy"
                     >
                 </div>
             </div>
