@@ -34,6 +34,11 @@ const router = new VueRouter({
             path: "/my",
             component: () => import("./my")
         },
+
+        {
+            path: "/confirm/:hash",
+            component: () => import("./confirm")
+        }
     ]
 });
 

@@ -80,19 +80,12 @@
     animation-name: in;
 }
 
-/*.end.page-transition,*/
-/*.start.page-transition {*/
-/*    pointer-events: all;*/
-/*}*/
+@keyframes rotate {
+    from {
+        transform: rotate(0);
+    }
 
-/*.path-animation {*/
-/*    stroke-dasharray: 1000;*/
-/*    stroke-dashoffset: 1000;*/
-/*    animation: dash 1s ease-in-out forwards infinite;*/
-/*}*/
-
-/*@keyframes dash {*/
-/*    to {*/
-/*        stroke-dashoffset: 0;*/
-/*    }*/
-/*}*/
+    to {
+        transform: rotate(360deg);
+    }
+}
