@@ -246,9 +246,7 @@
                                     <h4 class="sub">{{ comment.post.title }}</h4>
                                 </router-link>
 
-                                <button class="wrap radius ml-auto">
-                                    <a-info icon="good">{{ comment.like }}</a-info>
-                                </button>
+                                <a-info icon="good" class="ml-auto">{{ comment.like }}</a-info>
                             </div>
 
                             <div class="comment-info">
