@@ -173,7 +173,11 @@
                 <div class="user-info ml-auto">
                     <span class="sub" v-if="$root.user">Hi, {{ $root.user.name }}.</span>
 
-                    <button class="wrap">
+                    <button
+                        class="wrap"
+                        style="margin-left: 1rem;"
+                        @click="logout"
+                    >
                         <i class="iconfont icon-sign-out"></i>
                     </button>
                 </div>
@@ -266,6 +270,8 @@
 </template>
 
 <script>
+import utils from "../utils";
+
 export default {
     data() {
         return {
@@ -293,7 +299,13 @@ export default {
                 this.fetchData();
                 this.message.success("签到成功！");
             });
-        }
+        },
+
+        logout() {
+            this.$router.push("/");
+            utils.remove("token");
+            this.$root.user = null;
+        },
     }
 }
 </script>
