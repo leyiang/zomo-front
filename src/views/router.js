@@ -37,4 +37,28 @@ const router = new VueRouter({
     ]
 });
 
+let init = true;
+
+router.beforeEach( (to, from, next) => {
+    if( init ) {
+        init = false;
+        next();
+    } else {
+        animationContainer.classList.toggle("start");
+        animationContainer.classList.toggle("end");
+
+        const block = animationContainer.querySelectorAll(".block")[2];
+
+        const start = () => {
+            next();
+            animationContainer.classList.toggle("start");
+            animationContainer.classList.toggle("end");
+
+            block.removeEventListener("animationend", start);
+        };
+
+        block.addEventListener("animationend", start);
+    }
+});
+
 export default router;

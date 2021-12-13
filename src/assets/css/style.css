@@ -2,6 +2,10 @@
 @import "./layout.css";
 @import "./animation.css";
 
+body {
+    overflow-y: scroll;
+}
+
 :root {
     --main-color: #254BD3;
     --main-bright-color: #335ced;
@@ -126,6 +130,7 @@ textarea {
 .cap {
     border-radius: 10rem;
 }
+
 .btn:disabled {
     filter: grayscale(1);
     cursor: not-allowed;

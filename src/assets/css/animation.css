@@ -27,10 +27,53 @@
     bottom: 0;
     right: 0;
     z-index: 1000;
+    pointer-events: none;
 }
 
 .page-transition .block {
     background-color: #222;
     width: 100%;
     flex: 1;
+    transform: translateX(-100%);
+    animation: 700ms ease-in-out both;
+}
+
+.page-transition .block:nth-of-type(1) {
+    animation-delay: 200ms;
+}
+
+.page-transition .block:nth-of-type(2) {
+    animation-delay: 300ms;
+}
+
+.page-transition .block:nth-of-type(3) {
+    animation-delay: 400ms;
+}
+
+@keyframes in {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes out {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
+
+.start .block {
+    animation-name: out;
+}
+
+.end .block {
+    animation-name: in;
 }
