@@ -49,6 +49,13 @@ new Vue({
                 this.categories = data;
                 this.currentCategoryID = data[0].id;
             });
+        },
+
+        loginFirst() {
+            if( ! this.user ) {
+                this.message.fails("请先登录！");
+                throw new Error("请先登录");
+            }
         }
     },
 }).$mount('#app')

@@ -8,6 +8,7 @@
 }
 
 .post-info {
+    margin-top: -2rem;
     margin-bottom: 2rem;
 }
 
@@ -190,6 +191,8 @@ export default {
         },
 
         reply(event, parent = null, callback) {
+            this.$root.loginFirst();
+
             const data = new FormData(event.target);
             data.append("post", this.id);
 
@@ -204,6 +207,8 @@ export default {
         },
 
         likePost() {
+            this.$root.loginFirst();
+
             let back = this.post.data.liked_by_current;
             let diff = back ? -1 : 1;
 
