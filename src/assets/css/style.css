@@ -135,3 +135,9 @@ textarea {
     filter: grayscale(1);
     cursor: not-allowed;
 }
+
+.btn-loading {
+    display: inline-block;
+    animation: rotate 2s forwards infinite linear;
+    margin-left: .5rem;
+}

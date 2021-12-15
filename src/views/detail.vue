@@ -109,7 +109,13 @@
                 <div class="form-el">
                     <textarea class="flex w-full radius" name="content" required></textarea>
                 </div>
-                <button class="btn ml-auto">添加评论</button>
+                <button
+                    class="btn ml-auto"
+                    :disabled="reply_loading"
+                >
+                    <span>添加评论</span>
+                    <i class="iconfont icon-loading btn-loading" v-if="reply_loading"></i>
+                </button>
             </form>
 
             <hr class="dashed">
@@ -135,6 +141,8 @@ import utils from "../utils";
 export default {
     data() {
         return {
+            reply_loading: false,
+
             id: null,
             ref: {},
             comments: [],
@@ -197,13 +205,16 @@ export default {
             data.append("post", this.id);
 
             if (parent) data.append("parent", parent);
+            // this.reply_loading = true;
 
             this.api.post("/comments", data).then(r => {
                 this.message.success("留言成功！");
                 this.fetchData();
                 event.target.reset();
                 if (callback) callback();
-            });
+            }).finally(() => {
+                // this.reply_loading = false;
+            })
         },
 
         likePost() {

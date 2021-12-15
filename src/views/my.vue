@@ -208,8 +208,10 @@
                             <button
                                 class="btn"
                                 @click="checkin"
-                                :disabled="detail.checked_in"
-                            >{{ detail.checked_in ? "今天已经签到了~" : "点击签到" }}
+                                :disabled="detail.checked_in || checkin_loading"
+                            >
+                                <span>{{ detail.checked_in ? "今天已经签到了~" : "点击签到" }}</span>
+                                <i class="iconfont icon-loading btn-loading" v-if="checkin_loading"></i>
                             </button>
                         </div>
                     </div>
@@ -275,6 +277,8 @@ import utils from "../utils";
 export default {
     data() {
         return {
+            checkin_loading: false,
+
             detail: {
                 comments: [],
             }
@@ -289,15 +293,16 @@ export default {
         fetchData() {
             this.api.get("/my").then(({data}) => {
                 this.detail = data;
-                console.log(data);
             });
         },
 
         checkin() {
+            this.checkin_loading = true;
             this.api.get('/checkin').then(r => {
-                console.log(r.data);
-                this.fetchData();
+                this.detail.checked_in = true;
                 this.message.success("签到成功！");
+            }).finally(() => {
+                this.checkin_loading = false;
             });
         },
 
