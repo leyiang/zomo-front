@@ -36,7 +36,7 @@ new Vue({
         getUserInfo() {
             if (!this.token) return;
 
-            this.api.get("/users/me").then(({data}) => {
+            this.api.get("/me").then(({data}) => {
                 this.user = data;
             }).catch( e => {
                 utils.remove("token");

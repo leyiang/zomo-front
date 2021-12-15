@@ -1,7 +1,9 @@
 <style>
 .my-aside {
     width: 400px;
-    background-color: #254BD3;
+    background-color: #FFF;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    position: relative;
 }
 
 .my-header {
@@ -84,15 +86,13 @@
     right: 60px;
 }
 
-.my-aside {
-    padding-top: 70px;
-    color: #FFF;
-}
-
 .my-aside .avatar {
-    width: 140px;
-    height: 140px;
+    width: 100px;
+    height: 100px;
+    border: 5px solid #FFF;
     position: relative;
+    box-sizing: border-box;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .my-aside img {
@@ -101,14 +101,14 @@
 
 .my-aside h4 {
     margin: 0;
-    font-size: 24px;
-    font-weight: 400;
+    font-size: 36px;
+    font-family: "Franklin Gothic Medium", serif
 }
 
 .my-aside .wrap {
     position: absolute;
-    top: 5px;
-    right: 0;
+    top: 0;
+    right: -5px;
     padding: 0;
     border-radius: 50%;
 }
@@ -117,8 +117,8 @@
     color: #FFF;
     font-weight: 700;
     background-color: #333;
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
 }
 
@@ -149,21 +149,119 @@
 .comment-message {
     margin: 0 0 .5rem;
 }
+
+.deco {
+    position: absolute;
+    font-weight: 700;
+    font-family: "Microsoft YaHei UI", serif;
+    font-size: 1.125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.deco:nth-of-type(1) {
+    top: 40px;
+    left: 30px;
+}
+
+.deco:nth-of-type(1)::before {
+    content: '';
+    display: inline-block;
+    background-color: #222;
+    height: 1em;
+    width: 7px;
+    margin-right: .5rem;
+    margin-top: 1px;
+    border-radius: 2px;
+}
+
+.deco:nth-of-type(2) {
+    top: 40px;
+    right: 30px;
+}
+
+.deco:nth-of-type(2) svg {
+    width: 18px;
+    height: 18px;
+    margin-left: .5rem;
+}
+.deco:nth-of-type(3) {
+    bottom: 40px;
+    left: 30px;
+    align-items: flex-start;
+}
+
+.deco:nth-of-type(4) {
+    bottom: 50px;
+    right: 30px;
+    width: 40px;
+    height: 10px;
+    background-color: #222;
+}
+
+input {
+    padding: .5rem;
+    font-size: 1.25rem;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.edit-form {
+    margin: 1rem;
+}
+
+.edit-form h4 {
+    font-size: 1.5rem;
+    margin: 0 0 1.5rem;
+}
+
+.edit-form .form-el {
+    margin-bottom: 1rem;
+}
+
+.edit-form label {
+    margin-bottom: .5rem;
+}
+
+.edit-form button {
+    margin-top: 1rem;
+}
 </style>
 
 <template>
     <div class="my-page flex h-full">
-        <aside class="my-aside">
+        <aside class="my-aside center">
+            <div class="deco">MY PAGE</div>
+            <div class="deco">
+                <span>琢磨</span>
+                <svg t="1639560319328" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                     xmlns="http://www.w3.org/2000/svg" p-id="2010" width="200" height="200">
+                    <path
+                        d="M1014.573167 822.652176L703.950268 512.029277l310.622899-310.622899a31.99659 31.99659 0 0 0 0-45.243179L867.836804 9.426835a31.99659 31.99659 0 0 0-45.243179-0.031996L511.970726 320.017738 201.347827 9.394839a31.932597 31.932597 0 0 0-45.243179 0.031996L9.368284 156.163199a31.99659 31.99659 0 0 0 0 45.243179L319.991184 512.029277 9.368284 822.652176a31.964594 31.964594 0 0 0 0 45.243179l146.736364 146.736363a31.99659 31.99659 0 0 0 45.243179 0L511.970726 704.008819l310.622899 310.622899a31.99659 31.99659 0 0 0 45.243179 0l146.736363-146.736363a31.964594 31.964594 0 0 0 0-45.243179z"
+                        p-id="2011"></path>
+                </svg>
+            </div>
+            <div class="deco flex flex-col">
+                <span>SCOFIELD</span>
+                <span>DESIGN</span>
+            </div>
+            <div class="deco"></div>
+
             <div class="flex flex-col gap-2 align-center">
                 <div class="avatar">
                     <button class="wrap">
                         <span class="edit center"><i class="iconfont icon-upload"></i></span>
                     </button>
-                    <img src="../assets/p_img.png" alt="profile_image">
+                    <img src="../assets/p_img.jpg" alt="profile_image">
                 </div>
 
-                <h4 v-if="$root.user">{{ $root.user.name }}</h4>
-                <button class="btn btn-sub btn-sm cap btn-ghost" style="padding: .5rem 1rem">Update info</button>
+                <h4 v-if="$root.user">{{ $root.user.nickname }}</h4>
+                <button
+                    class="btn btn-sm cap"
+                    style="padding: .5rem 1rem"
+                    @click="editUser = true"
+                >编辑信息</button>
             </div>
         </aside>
 
@@ -171,8 +269,6 @@
             <header class="my-header flex align-center">
 
                 <div class="user-info ml-auto">
-                    <span class="sub" v-if="$root.user">Hi, {{ $root.user.name }}.</span>
-
                     <button
                         class="wrap"
                         style="margin-left: 1rem;"
@@ -262,10 +358,33 @@
                         </div>
                         <hr>
                     </template>
-
                 </div>
             </div>
         </main>
+
+        <a-modal
+            :show="editUser"
+            @close="editUser = false"
+        >
+            <form
+                @submit.prevent="updateUser"
+                class="flex flex-col w-full edit-form"
+                v-if="$root.user"
+            >
+                <h4>信息修改</h4>
+                <div class="form-el flex flex-col">
+                    <label for="nickname">昵称</label>
+                    <input type="text" id="nickname" v-model="$root.user.nickname" required>
+                </div>
+
+                <div class="form-el flex flex-col">
+                    <label for="nickname">密码</label>
+                    <input type="text" id="password" placeholder="留空不修改">
+                </div>
+
+                <button class="btn btn-sm mt-auto ml-auto">保存修改</button>
+            </form>
+        </a-modal>
     </div>
 </template>
 
@@ -275,6 +394,7 @@ import utils from "../utils";
 export default {
     data() {
         return {
+            editUser: false,
             checkin_loading: false,
 
             detail: {
@@ -312,8 +432,26 @@ export default {
         },
 
         copyInvitation() {
-            navigator.clipboard.writeText(this.detail.invitation_code );
+            navigator.clipboard.writeText(this.detail.invitation_code);
             this.message.success("复制成功！");
+        },
+
+        updateUser() {
+            if( ! this.$root.user ) return;
+
+            this.api.post("/update/user", this.$root.user ).then( r => {
+                this.editUser = false;
+                this.message.success("修改成功！");
+            }).catch( e => {
+                this.$root.user.nickname = this.oldNickname;
+            })
+        }
+    },
+
+    watch: {
+        editUser() {
+            if( ! this.$root.user ) return;
+            this.oldNickname = this.$root.user.nickname;
         }
     }
 }

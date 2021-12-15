@@ -54,7 +54,7 @@
                 to="/my"
                 v-if="$root.user"
                 class="center"
-            >Hi, {{ $root.user.name }}
+            >Hi, {{ $root.user.nickname }}
             </router-link>
 
             <router-link
