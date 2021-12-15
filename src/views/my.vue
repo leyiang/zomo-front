@@ -374,12 +374,12 @@ input {
                 <h4>信息修改</h4>
                 <div class="form-el flex flex-col">
                     <label for="nickname">昵称</label>
-                    <input type="text" id="nickname" v-model="$root.user.nickname" required>
+                    <input type="text" id="nickname" v-model="$root.user.nickname" required class="nickname">
                 </div>
 
                 <div class="form-el flex flex-col">
                     <label for="nickname">密码</label>
-                    <input type="text" id="password" placeholder="留空不修改">
+                    <input type="text" id="password" placeholder="留空不修改" name="password" v-model="$root.user.password">
                 </div>
 
                 <button class="btn btn-sm mt-auto ml-auto">保存修改</button>

@@ -112,7 +112,7 @@ export default {
                 utils.store("token", data.token);
 
                 this.$root.token = data.token;
-                // this.$root.getUserInfo();
+                this.$root.getUserInfo();
 
                 this.message.success("登录成功~", () => {
                     this.$router.push("/my");
