@@ -217,27 +217,25 @@
                     </div>
                 </div>
 
-                <!--        <div class="section">-->
-                <!--          <h2 class="section-title">我收藏的</h2>-->
-                <!--          <a-post-list>-->
-                <!--            <a-post></a-post>-->
-                <!--            <a-post></a-post>-->
-                <!--            <a-post></a-post>-->
-                <!--            <a-post></a-post>-->
-                <!--            <a-post></a-post>-->
-                <!--          </a-post-list>-->
-                <!--        </div>-->
+                <div class="section">
+                    <h2 class="section-title">我收藏的</h2>
+                    <a-post-list>
+                        <a-post
+                            v-for="post in detail.liked_posts"
+                            :post="post"
+                        ></a-post>
+                    </a-post-list>
+                </div>
 
-                <!--        <div class="section">-->
-                <!--          <h2 class="section-title">我点赞的</h2>-->
-                <!--          <a-post-list>-->
-                <!--            <a-post></a-post>-->
-                <!--            <a-post></a-post>-->
-                <!--            <a-post></a-post>-->
-                <!--            <a-post></a-post>-->
-                <!--            <a-post></a-post>-->
-                <!--          </a-post-list>-->
-                <!--        </div>-->
+                <div class="section">
+                    <h2 class="section-title">我点赞的</h2>
+                    <a-post-list>
+                        <a-post
+                            v-for="post in detail.liked_posts"
+                            :post="post"
+                        ></a-post>
+                    </a-post-list>
+                </div>
 
                 <div class="section">
                     <h2 class="section-title">我评论的</h2>
@@ -281,6 +279,7 @@ export default {
 
             detail: {
                 comments: [],
+                liked_posts: [],
             }
         }
     },
