@@ -70,12 +70,12 @@
 
                 <div class="form-el flex flex-col">
                     <label for="username">用户名</label>
-                    <input type="text" id="username" name="username" required class="radius">
+                    <input type="text" id="username" name="username" required class="radius" autocomplete="off">
                 </div>
 
                 <div class="form-el flex flex-col">
                     <label for="password">密码</label>
-                    <input type="password" id="password" name="password" required class="radius">
+                    <input type="password" id="password" name="password" required class="radius" autocomplete="off">
                 </div>
 
                 <button

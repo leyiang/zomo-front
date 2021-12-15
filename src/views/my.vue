@@ -204,7 +204,7 @@
 
                         <div class="flex gap-1 ml-auto mt-auto btn-list">
                             <img src="../assets/sprite.svg" alt="sprite">
-                            <button class="btn">复制邀请链接</button>
+                            <button class="btn" @click="copyInvitation">复制邀请码</button>
                             <button
                                 class="btn"
                                 @click="checkin"
@@ -310,6 +310,11 @@ export default {
             utils.remove("token");
             this.$root.user = null;
         },
+
+        copyInvitation() {
+            navigator.clipboard.writeText(this.detail.invitation_code );
+            this.message.success("复制成功！");
+        }
     }
 }
 </script>

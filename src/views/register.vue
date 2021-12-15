@@ -75,17 +75,17 @@
 
                 <div class="form-el flex flex-col">
                     <label for="email">邮箱</label>
-                    <input type="email" id="email" name="email" required class="radius">
+                    <input type="email" id="email" name="email" required class="radius" autocomplete="off">
                 </div>
 
                 <div class="form-el flex flex-col">
                     <label for="password">密码</label>
-                    <input type="password" id="password" name="password" required class="radius">
+                    <input type="password" id="password" name="password" required class="radius" autocomplete="off">
                 </div>
 
                 <div class="form-el flex flex-col">
-                    <label for="invite_code">邀请码 <span class="sub">(如果有的话)</span></label>
-                    <input type="text" id="invite_code" name="invite_code" class="radius" autocomplete="off">
+                    <label for="invitation_code">邀请码 <span class="sub">(如果有的话)</span></label>
+                    <input type="text" id="invitation_code" name="invitation_code" class="radius" autocomplete="off">
                 </div>
 
                 <button
